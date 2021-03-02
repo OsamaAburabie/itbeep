@@ -1,0 +1,8 @@
+.Form__contain {
+  width: 40%;
+  background: #ffffff;
+  padding: 20px;
+}
+.Form__contain h1 {
+  text-align: center;
+}
