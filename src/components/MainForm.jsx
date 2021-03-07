@@ -4,6 +4,7 @@ import { MainContect } from "../context/MainContext";
 import "./MainForm.css";
 import OfferPopup from "./OfferPopup";
 import DatePopup from "./DatePopup";
+import ThankYouPopup from "./ThankYouPopup";
 function MainForm() {
   const {
     setFormData,
@@ -12,12 +13,17 @@ function MainForm() {
     setOfferPop,
     closeOffer,
     datePop,
-    setDatepop,
+    closeDate,
+    ThankPop,
+    closeThanks,
   } = useContext(MainContect);
 
   const fontSub = (e) => {
+    const { name, phone, email } = FormData;
     e.preventDefault();
-    setOfferPop(true);
+    if (name && phone && email) {
+      setOfferPop(true);
+    }
   };
   return (
     <div className="Form__contain">
@@ -30,6 +36,7 @@ function MainForm() {
             onChange={(e) => {
               setFormData({ ...FormData, name: e.target.value });
             }}
+            value={FormData.name}
           />
         </Form.Group>
         <Form.Group>
@@ -39,6 +46,7 @@ function MainForm() {
             onChange={(e) => {
               setFormData({ ...FormData, phone: e.target.value });
             }}
+            value={FormData.phone}
           />
         </Form.Group>
         <Form.Group>
@@ -48,6 +56,7 @@ function MainForm() {
             onChange={(e) => {
               setFormData({ ...FormData, email: e.target.value });
             }}
+            value={FormData.email}
           />
         </Form.Group>
 
@@ -56,7 +65,8 @@ function MainForm() {
         </Button>
       </Form>
       <OfferPopup show={offerPop} onHide={closeOffer} />
-      <DatePopup show={datePop} onHide={setDatepop} />
+      <DatePopup show={datePop} onHide={closeDate} />
+      <ThankYouPopup show={ThankPop} onHide={closeThanks} />
     </div>
   );
 }

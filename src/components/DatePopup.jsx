@@ -4,10 +4,12 @@ import React, { useContext } from "react";
 import { MainContect } from "../context/MainContext";
 
 function DatePopup(props) {
-  const { setDates } = useContext(MainContect);
+  const { setDates, setDatepop, setThankPop } = useContext(MainContect);
 
   const handleClick = (e) => {
     setDates(e.target.value);
+    setDatepop(false);
+    setThankPop(true);
   };
   return (
     <Modal
